@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hoi Nhanh</title>
+    <!-- <script type="text/javascript">
+        /*=============  This is a count of total number to be displayed ==================*/
+        var setTotalNumberOfWordCounter = "100";
+        /*=============  This is a count of total number to be displayed ==================*/
+          
+        /*This function first get the value of textarea. And read length of that textarea
+        charactor. then compare the value of set value.*/
+          
+        function displayWordCounter(){
+        var getTextValue = document.frm.question.value;  // Get input textarea value
+        var getTextLength = getTextValue.length;   // Get length of input textarea value
+        if(getTextLength > setTotalNumberOfWordCounter){     //compare this length with total count
+                getTextValue = getTextValue.substring(0,setTotalNumberOfWordCounter);
+                document.frm.question.value =getTextValue;
+                return false;
+        }
+        document.frm.totalWordLimit.value = (setTotalNumberOfWordCounter-getTextLength);
+          
+        }
+        </script> -->
+</head>
+<body>
+       
+    <form name ="frm" action="/ask" method="post">
+        <h3>Hoi 1 cau</h3>
+        <textarea name="question" id="textInput" cols="30" rows="10" maxlength="200"></textarea>
+        <p id="remain">con 200 ky tu</p>
+        <button type="submit">Gui</button>
+    </form>
+    <script src="/ask.js"></script>
+</body>
+</html>

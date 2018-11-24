@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="question">Question</h1>
+    <button id="no">Sai/Không</button>
+    <button id="yes">Đúng/Có</button>
+    <button>Cau hoi khac</button>
+    <!-- <script>
+        function reqListener() {
+            console.log(this.responseText);
+            let question = JSON.parse(this.responseText).question;
+            console.log(question, question.content);
+            document.getElementById("question").innerText = question.content;
+        }
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.open("GET", "http://localhost:6969/randomquestion");
+        oReq.send();
+    </script> -->
+       <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+       crossorigin="anonymous"></script>
+    <script>
+        var questionId = null;
+        $.ajax({
+            url: "http://localhost:6969/randomquestion",
+            type: "GET",
+            success: function (data) {
+                console.log(data);
+                $("#question").text(data.question.content);
+                questionId = data.question.id;
+                $("#question").attr("data-question",data.question.id);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        $("#no").on("click", function () {
+            $.ajax({
+                url: "http://localhost:6969/answer",
+                type: "post",
+                data: {
+                    questionId: $("#question").attr("data-question"),
+                    vote: "no"
+                },
+                success: function (data) {
+                    console.log(data);
+                    window.location.href = "/" + data.id;
+                },
+                error: function (err) {
+                }
+            })
+        });
+
+        $("#yes").on("click", function () {
+            $.ajax({
+                url: "http://localhost:6969/answer",
+                type: "post",
+                data: {
+                    questionId: $("#question").attr("data-question"),
+                    vote: "yes"
+                },
+                success: function (data) {
+                    console.log(data);
+                    window.location.href = "/" + data.id;
+                },
+                error: function (err) {
+                }
+            })
+        });
+    </script>
+ 
+</body>
+
+</html>

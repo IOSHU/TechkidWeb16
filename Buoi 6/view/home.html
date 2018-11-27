@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./home.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+   
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Quyết đê !!!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="active">
+                    <a class="nav-link" href="/ask">Hỏi nhanh <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Đáp gọn</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h1 class="text-center" id="question">Question</h1>
+
+
+
+
+
+        <div class="row text-center">
+            <div class="col-md-6">
+                <button id="no" type="submit" class="btn btn-danger btn-lg">
+                    <i class="far fa-thumbs-down"></i>
+                    Sai / Không / Trái
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button id="yes" type="submit" class="btn btn-primary btn-lg">
+                    <i class="far fa-thumbs-up"></i>
+                    Đúng / Có / Phải
+                </button>
+            </div>
+        </div>
+
+
+
+
+        <div class="text-center" id="btn_chuyen">
+            <button type="submit" class="btn btn-default" name="btn_yesno" value="ketquavote">Kết quả vote</button>
+            <a href="/"> <button type="submit" class="btn btn-default" name="btn_yesno" value="cauhoikhac">Câu hỏi
+                    khác</button></a>
+        </div>
+
+
+
+
+
+    </div>
+    </script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        var questionId = null;
+        // $.ajax({
+        //     url: "http://localhost:6969/randomquestion",
+        //     type: "GET",
+        //     success: function (data) {
+        //         console.log(data);
+        //         $("#question").text(data.question.content);
+        //         questionId = data.question.id;
+        //         $("#question").attr("data-question", data.question.id);
+        //     },
+        //     error: function (err) {
+        //         console.log(err);
+        //     }
+        // });
+        $.ajax({
+            url: "http://localhost:6969/randomquestion",
+            type: "GET",
+            success: function (data) {
+                console.log(data);
+                $("#question").text(data.question.content);
+                questionId = data.question._id;
+                console.log(data.question_id);
+                $("#question").attr("data-question", data.question_id);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // $("#no","#yes").on("click", function () {
+        //     $.ajax({
+        //         url: "http://localhost:6969/answer",
+        //         type: "post",
+        //         data: {
+        //             questionId: $("#question").attr("data-question"),
+        //             vote: $(this).attr("id") //"yes" || "no"
+
+        //         },
+        //         success: function (data) {
+        //             console.log(data);
+        //             window.location.href = "/question/" + data.question._id;
+        //         },
+        //         error: function (err) {
+        //         }
+        //     })
+        // });
+        // tach rieng
+        // $("#yes").on("click", function () {
+        //     $.ajax({
+        //         url: "http://localhost:6969/answer",
+        //         type: "POST",
+        //         data: {
+        //             questionId: $("#question").attr("data-question"),
+        //             vote: "yes"
+        //         },
+        //         success: function (data) {
+        //             console.log(data);
+        //             window.location.href = "/" + data.question._id;
+        //         },
+        //         error: function (err) {
+        //             console.log("fail")
+        //         }
+        //     })
+        // });
+
+        $("#yes").on('click', function () {
+            $.ajax({
+                url: "http://localhost:6969/answer",
+                type: "post",
+                data: {
+                    questionId: $("#question").attr("data-question"),
+                    vote: "yes"
+                },
+                success: function (data) {
+                    console.log(data);
+                    console.log(data.question_id);
+                    window.location.href = "/question/" + data.question._id;
+                },
+                error: function (err) {
+                    console.log("fail")
+                }
+            })
+        }); 
+    </script>
+    <!-- // jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script> -->
+</body>
+
+</html>

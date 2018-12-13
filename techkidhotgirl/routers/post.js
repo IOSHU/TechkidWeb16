@@ -48,5 +48,18 @@ PostRouter.put("/api/posts/:ID", (req, res) => {
             }
     })
 })
+//delete
+//del
+PostRouter.delete("/api/posts/:ID",(req,res)=>{
+    const postid = req.params.ID
+    PostModel.findByIdAndDelete(postid, (err, postFound) => {
+        if (err) res.status(500).json({ success: 0, message: err })
+        else
+            if (!postFound) res.send({ message: 'post not found!', success: 0 })
+            else {
+                res.json(postFound);
+            }
+    })
+})
 
 module.exports = PostRouter;

@@ -48,15 +48,15 @@ UserRouter.put("/api/users/:ID", (req, res) => {
     })
 })
 //del
-// UserRouter.delete("/api/users/:ID",(req,res)=>{
-//     const userid = req.params.ID
-//     UserModel.findById(userid, (err, userFound) => {
-//         if (err) res.status(500).json({ success: 0, message: err })
-//         else
-//             if (!userFound) res.send({ message: 'user not found!', success: 0 })
-//             else {
-//                 userFound.delete();
-//             }
-//     })
-// })
+UserRouter.delete("/api/users/:ID",(req,res)=>{
+    const userid = req.params.ID
+    UserModel.findByIdAndDelete(userid, (err, userFound) => {
+        if (err) res.status(500).json({ success: 0, message: err })
+        else
+            if (!userFound) res.send({ message: 'user not found!', success: 0 })
+            else {
+                res.json(userFound);
+            }
+    })
+})
 module.exports = UserRouter;

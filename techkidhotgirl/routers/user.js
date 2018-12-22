@@ -47,7 +47,7 @@ UserRouter.put("/api/users/:ID", (req, res) => {
             }
     })
 })
-//del
+//del-del
 UserRouter.delete("/api/users/:ID",(req,res)=>{
     const userid = req.params.ID
     UserModel.findByIdAndDelete(userid, (err, userFound) => {

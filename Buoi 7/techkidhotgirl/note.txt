@@ -1,0 +1,15 @@
+Post>/createquestion
+>API> CRUD
+> restjulAPI
+create : Post>/api/users
+read :GET>/api/users > getall
+	GET>/api/users > get ONE
+update : put> /api/users /:ID 
+	put> /api/users
+del  Delete
+
+method > endpoint
+GET-------
+PUT
+post
+DELETE

@@ -1,0 +1,15 @@
+- Post:
+	- view
+	- createdTime
+	- image
+	- like
+	- author
+	- comments
+	- title
+	- description
+- User:
+	- username
+	- password
+	- email
+	- phone
+	- fullname
